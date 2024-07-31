@@ -30,11 +30,17 @@ export class HousingService {
   ];
 
 
+
+  constructor() { }
   getAllHousingLocations():HousingLocation[]{
     return  this.housingLocationList;}
 
   getHousingLocationbyId(id:Number):HousingLocation|undefined{
     return this.housingLocationList.find(housinglocation=>housinglocation.id===id);
-}
-  constructor() { }
+  }
+
+  submitApplication(firstName:string,lastName:string){
+    console.log(firstName,lastName);
+
+  }
 }
