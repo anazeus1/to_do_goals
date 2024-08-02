@@ -25,7 +25,7 @@ export class HomeComponent {
 
   searchHousing(){
     this.title=this.searchControl.value??"";
-    console.log(this.searchControl.value?.toString()??"ssss")
+    console.log(this.searchControl.value?.toString()??"")
   }
   constructor() {
     this.housingService.getAllHousingLocations().then((housingLocations:HousingLocation[])=>{
