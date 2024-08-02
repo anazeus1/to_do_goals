@@ -1,42 +1,35 @@
 import { Injectable } from '@angular/core';
 import {HousingLocation} from "./housing-location";
+import {Debugger} from "node:inspector";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HousingService {
+
+  url="http://localhost:3000/locations";
   protected housingLocationList:HousingLocation[]=[
-    {
-      "id":1,
-      "name":"Nasr",
-      "photo":"./assets/nasr.jpeg"},
-    {
-      "id":2,
-      "name":"Meitnerweg",
-      "photo":"./assets/meitnerweg.jpeg"},
-    {
-      "id":3,
-      "name":"Bali",
-      "photo":"./assets/bali.jpeg"
-    },
-    {
-      "id":4,
-      "name":"Malaysia",
-      "photo":"./assets/malaysia.jpeg"},
-    {
-      "id":5,
-      "name":"ankara",
-      "photo":"./assets/nasr.jpeg"}
+
   ];
 
 
 
   constructor() { }
-  getAllHousingLocations():HousingLocation[]{
-    return  this.housingLocationList;}
+  async getAllHousingLocations():Promise<HousingLocation[]>{
 
-  getHousingLocationbyId(id:Number):HousingLocation|undefined{
-    return this.housingLocationList.find(housinglocation=>housinglocation.id===id);
+    const data=await fetch(this.url);
+    return await data.json()?? [];
+  }
+
+  async getHousingLocationById(id:Number):Promise<HousingLocation|undefined>{
+    const data=await fetch("http://localhost:3000/locations?id=1");
+    debugger
+
+    return await data.json() ??  {
+      "id": 1,
+      "name": "Naadddddddddasr",
+      "photo": "./assets/nasr.jpeg"
+    };
   }
 
   submitApplication(firstName:string,lastName:string){

@@ -1,4 +1,5 @@
-<article><section><img  class="photo" [src]="housingLocation?.photo"></section>
+<article><section><img class="photo" [src]="housingLocation?.photo"></section>
+  <h1>{{housingLocation?.id}}</h1>
   <section>
     <h2 class="section-heading">Apply to live here</h2>
     <form [formGroup]="applyForm" (submit)="submitApplication()" >

@@ -1,0 +1,24 @@
+{
+  "locations": [
+    {
+    "id":1,
+    "name":"Naaasr",
+    "photo":"./assets/nasr.jpeg"},
+    {
+      "id":2,
+      "name":"Meitnerweg",
+      "photo":"./assets/meitnerweg.jpeg"},
+    {
+      "id":3,
+      "name":"Bali",
+      "photo":"./assets/bali.jpeg"
+    },
+    {
+      "id":4,
+      "name":"Malaysia",
+      "photo":"./assets/malaysia.jpeg"},
+    {
+      "id":5,
+      "name":"ankara",
+      "photo":"./assets/nasr.jpeg"}]
+}

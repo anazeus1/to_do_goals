@@ -8,7 +8,8 @@ import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
   selector: 'app-details',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
@@ -24,7 +25,13 @@ export class DetailsComponent {
 
 
   constructor() {
-      this.housingLocation=this.housingService.getHousingLocationbyId(Number(this.route.snapshot.params['id']));
+      let id = Number(this.route.snapshot.params['id']);
+      this.housingService.getHousingLocationById(id).then((housingLocation)=>{
+        this.housingLocation=housingLocation;
+        debugger
+      });
+
+
     }
 
     submitApplication(){

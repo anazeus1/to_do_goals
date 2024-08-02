@@ -20,14 +20,17 @@ export class HomeComponent {
   housingService:HousingService=inject(HousingService);
   housingLocationList:HousingLocation[]=[];
   searchControl=new FormControl("");
-  title: string ="";
+  title: string ="s";
 
   searchHousing(){
     this.title=this.searchControl.value??"";
     console.log(this.searchControl.value?.toString()??"ssss")
   }
   constructor() {
-    this.housingLocationList=this.housingService.getAllHousingLocations();
+    this.housingService.getAllHousingLocations().then((housingLocationList:HousingLocation[])=>
+    {
+      this.housingLocationList=housingLocationList;
+    });
   }
 
 }
