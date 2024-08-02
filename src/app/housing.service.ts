@@ -5,38 +5,21 @@ import {HousingLocation} from "./housing-location";
   providedIn: 'root'
 })
 export class HousingService {
-  protected housingLocationList:HousingLocation[]=[
-    {
-      "id":1,
-      "name":"Nasr",
-      "photo":"./assets/nasr.jpeg"},
-    {
-      "id":2,
-      "name":"Meitnerweg",
-      "photo":"./assets/meitnerweg.jpeg"},
-    {
-      "id":3,
-      "name":"Bali",
-      "photo":"./assets/bali.jpeg"
-    },
-    {
-      "id":4,
-      "name":"Malaysia",
-      "photo":"./assets/malaysia.jpeg"},
-    {
-      "id":5,
-      "name":"ankara",
-      "photo":"./assets/nasr.jpeg"}
-  ];
-
+  protected housingLocationList:HousingLocation[]=[];
+  url="http://localhost:3000/locations";
 
 
   constructor() { }
-  getAllHousingLocations():HousingLocation[]{
-    return  this.housingLocationList;}
+  async getAllHousingLocations():Promise<HousingLocation[]>{
 
-  getHousingLocationbyId(id:Number):HousingLocation|undefined{
-    return this.housingLocationList.find(housinglocation=>housinglocation.id===id);
+    const data = await fetch(this.url);
+    debugger;
+    return data.json() ?? [];}
+
+  async getHousingLocationbyId(id:Number):Promise<HousingLocation|undefined>{
+    const data=await fetch(`${this.url}/${id}`);
+
+    return await data.json()?? {};
   }
 
   submitApplication(firstName:string,lastName:string){

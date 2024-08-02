@@ -19,6 +19,7 @@ import {FormControl} from "@angular/forms";
 export class HomeComponent {
   housingService:HousingService=inject(HousingService);
   housingLocationList:HousingLocation[]=[];
+  filteredLocationList:HousingLocation[]=[];
   searchControl=new FormControl("");
   title: string ="";
 
@@ -27,7 +28,22 @@ export class HomeComponent {
     console.log(this.searchControl.value?.toString()??"ssss")
   }
   constructor() {
-    this.housingLocationList=this.housingService.getAllHousingLocations();
+    this.housingService.getAllHousingLocations().then((housingLocations:HousingLocation[])=>{
+      this.housingLocationList=housingLocations;
+      this.filteredLocationList=housingLocations;
+    });
+  }
+  filterResults(text:string){
+    debugger
+    if(!text) this.filteredLocationList=this.housingLocationList;
+    else{
+      this.filteredLocationList=this.housingLocationList.filter((housingLocation)=>
+      {
+
+        return housingLocation?.name.toLowerCase().includes(text.toLowerCase());
+      })
+    }
+
   }
 
 }
