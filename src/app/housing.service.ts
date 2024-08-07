@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import {HousingLocation} from "./housing-location";
 
 @Injectable({
@@ -26,4 +26,4 @@ export class HousingService {
     console.log(firstName,lastName);
 
   }
-}
+}*/

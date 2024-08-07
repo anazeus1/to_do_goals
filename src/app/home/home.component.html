@@ -1,9 +1,5 @@
-<section>
+<p>home works!</p>
+<app-activity *ngFor="let activity of activities"[activity]="activity"></app-activity>
 
-  <input type="text" placeholder="Filter by city" #filter />
-  <button class="primary" type="button" (click)="filterResults(filter.value)"> Search</button>
 
-</section>
-<section class="results">
-<app-housing-location *ngFor="let Location of filteredLocationList" [housingLocation]="Location"></app-housing-location>
-</section>
+<p>{{activities[0].color}}</p>
